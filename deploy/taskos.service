@@ -1,0 +1,18 @@
+[Unit]
+Description=taskOS API Server
+After=network.target
+
+[Service]
+Type=simple
+User=taskos
+Group=taskos
+EnvironmentFile=-/etc/taskos/env
+ExecStart=/usr/local/bin/taskos-server
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

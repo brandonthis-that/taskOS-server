@@ -1,0 +1,5 @@
+taskos.db
+taskos.db-*
+*.exe
+/bin/
+/dist/
