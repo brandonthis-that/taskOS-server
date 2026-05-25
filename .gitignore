@@ -3,3 +3,4 @@ taskos.db-*
 *.exe
 /bin/
 /dist/
+.env
