@@ -1,18 +1,17 @@
 services:
   # --- PostgreSQL Database ---
   postgres_db:
-    image: postgres:16-alpine # Using a lightweight, stable version
+    image: postgres:16-alpine
     container_name: my_postgres
     environment:
-      POSTGRES_USER: brandmin
-      POSTGRES_PASSWORD: 123
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5432:5432" # Maps port 5432 on your machine to port 5432 in the container
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Persists your data so it isn't deleted
+      - postgres_data:/var/lib/postgresql/data
     restart: always
 
-# Define the persistent storage volume
 volumes:
   postgres_data:
