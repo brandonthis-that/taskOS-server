@@ -77,13 +77,14 @@ func (s *Server) updateTask(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	u := userFromContext(r.Context())
-	t, err := s.store.UpdateTask(r.Context(), u.ID, r.PathValue("id"), store.TaskUpdate{
-		Title:       req.Title,
-		Description: req.Description,
-		Done:        req.Done,
-		DueAt:       req.DueAt,
-		ClearDueAt:  req.ClearDueAt,
-	})
+	t, err := s.store.UpdateTask(r.Context(), u.ID, r.PathValue("id"),
+		store.TaskUpdate{
+			Title:       req.Title,
+			Description: req.Description,
+			Done:        req.Done,
+			DueAt:       req.DueAt,
+			ClearDueAt:  req.ClearDueAt,
+		})
 	if err != nil {
 		if errors.Is(err, store.ErrNotFound) {
 			writeError(w, http.StatusNotFound, "task not found")
